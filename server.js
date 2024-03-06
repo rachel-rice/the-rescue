@@ -8,30 +8,30 @@ let db,
     dbConnectionStr = process.env.DB_STRING,
     dbName = 'store'
 
-    async function connectToDatabase() {
-        try {
-            const client = await MongoClient.connect(dbConnectionStr, {
-                useUnifiedTopology: true,
-            });
-            console.log(`Connected to ${dbName} Database`);
-            db = client.db(dbName);
-        } catch (error) {
-            console.error("Error connecting to database:", error);
-        }
-    }
+    // async function connectToDatabase() {
+    //     try {
+    //         const client = await MongoClient.connect(dbConnectionStr, {
+    //             useUnifiedTopology: true,
+    //         });
+    //         console.log(`Connected to ${dbName} Database`);
+    //         db = client.db(dbName);
+    //     } catch (error) {
+    //         console.error("Error connecting to database:", error);
+    //     }
+    // }
     
-    connectToDatabase();
+    // connectToDatabase();
     
 
-// MongoClient.connect(dbConnectionStr, { 
+MongoClient.connect(dbConnectionStr, { 
     
-//     useUnifiedTopology: true,
+    useUnifiedTopology: true,
 
-//  })
-//     .then(client => {
-//         console.log(`Connected to ${dbName} Database`)
-//         db = client.db(dbName)
-//     })
+ })
+    .then(client => {
+        console.log(`Connected to ${dbName} Database`)
+        db = client.db(dbName)
+    })
 
     // async function connectToMongoDB() {
     //     try {
