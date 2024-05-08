@@ -6,7 +6,7 @@ require('dotenv').config()
 
 let db,
     dbConnectionStr = process.env.DB_STRING,
-    dbName = 'store'
+    dbName = 'rescue'
 
     async function connectToDatabase() {
         try {

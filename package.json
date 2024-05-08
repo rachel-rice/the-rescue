@@ -1,7 +1,7 @@
 {
-  "name": "the-store",
+  "name": "the-rescue",
   "version": "1.0.0",
-  "description": "the store",
+  "description": "the rescue",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
