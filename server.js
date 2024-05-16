@@ -46,6 +46,14 @@ let db,
     app.use(express.urlencoded({ extended: true })) 
     app.use(express.json())
 
+    app.get('/',(request, response)=>{
+        db.collection('rescues').find().sort({likes: -1}).toArray()
+        .then(data => {
+            response.render('index.ejs', { info: data })
+        })
+        .catch(error => console.error(error))
+    })
+
 app.listen(process.env.PORT || PORT, ()=>{
     console.log(`Server running on port ${PORT}`)
 })
