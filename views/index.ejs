@@ -19,7 +19,17 @@
 </head>
 <body>
     <h1>The Rescue Network</h1>
+    <ul class="rescues">
+    <% for(let i=0; i < info.length; i++) {%>
+        <li class="rescue">
+            <span><%= info[i].primaryName %></span>
+            <span><%= info[i].primaryBreed %></span>
+            <span class='del'>delete</span>
+        </li>
+    <% } %>
+    </ul>
 
+    <h2>Add A Rescue:</h2>
 
     <script src="js/main.js"></script>
 </body>

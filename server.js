@@ -47,9 +47,18 @@ let db,
     app.use(express.json())
 
     app.get('/',(request, response)=>{
-        db.collection('rescues').find().sort({likes: -1}).toArray()
+        db.collection('rescues').find().toArray()
         .then(data => {
             response.render('index.ejs', { info: data })
+        })
+        .catch(error => console.error(error))
+    })
+
+    app.post('/addRescue', (request, response) => {
+        db.collection('rescues').insertOne(request.body)
+        .then(result => {
+            console.log('Rescue Added')
+            response.redirect('/')
         })
         .catch(error => console.error(error))
     })
