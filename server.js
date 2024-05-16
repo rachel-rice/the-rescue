@@ -47,7 +47,7 @@ let db,
     app.use(express.json())
 
     app.get('/',(request, response)=>{
-        db.collection('rescues').find().toArray()
+        db.collection('rescues').find().sort({likes: -1}).toArray()
         .then(data => {
             response.render('index.ejs', { info: data })
         })
@@ -55,7 +55,8 @@ let db,
     })
 
     app.post('/addRescue', (request, response) => {
-        db.collection('rescues').insertOne(request.body)
+        db.collection('rescues').insertOne({primaryName: request.body.primaryName,
+        primaryBreed: request.body.primaryBreed, likes: 0})
         .then(result => {
             console.log('Rescue Added')
             response.redirect('/')
@@ -64,9 +65,7 @@ let db,
     })
 
     app.put('/addOneLike', (request, response) => {
-        db.collection('rescues').updateOne({primaryBreed: request.body.primaryBreedS, 
-                                            primaryName: request.body.primaryNameS,
-                                            likes: request.body.likesS},{
+        db.collection('rescues').updateOne({primaryName: request.body.primaryNameS, primaryBreed: request.body.primaryBreedS,likes: request.body.likesS},{
             $set: {
                 likes:request.body.likesS + 1
               }
@@ -79,6 +78,17 @@ let db,
             response.json('Like Added')
         })
         .catch(error => console.error(error))
+    
+    })
+
+    app.delete('/deleteRescue', (request, response) => {
+        db.collection('rescues').deleteOne({primaryName: request.body.primaryNamesS})
+        .then(result => {
+            console.log('Rescue Deleted')
+            response.json('Rescue Deleted')
+        })
+        .catch(error => console.error(error))
+    
     })
     
 app.listen(process.env.PORT || PORT, ()=>{
