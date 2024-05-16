@@ -63,6 +63,24 @@ let db,
         .catch(error => console.error(error))
     })
 
+    app.put('/addOneLike', (request, response) => {
+        db.collection('rescues').updateOne({primaryBreed: request.body.primaryBreedS, 
+                                            primaryName: request.body.primaryNameS,
+                                            likes: request.body.likesS},{
+            $set: {
+                likes:request.body.likesS + 1
+              }
+        },{
+            sort: {_id: -1},
+            upsert: true
+        })
+        .then(result => {
+            console.log('Added One Like')
+            response.json('Like Added')
+        })
+        .catch(error => console.error(error))
+    })
+    
 app.listen(process.env.PORT || PORT, ()=>{
     console.log(`Server running on port ${PORT}`)
 })
