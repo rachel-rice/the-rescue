@@ -55,8 +55,8 @@ let db,
     })
 
     app.post('/addRescue', (request, response) => {
-        db.collection('rescues').insertOne({primaryName: request.body.primaryName,
-        primaryBreed: request.body.primaryBreed, likes: 0})
+        db.collection('rescues').insertOne({primaryBreed: request.body.primaryBreed,
+        primaryName: request.body.primaryName, likes: 0})
         .then(result => {
             console.log('Rescue Added')
             response.redirect('/')
@@ -65,7 +65,7 @@ let db,
     })
 
     app.put('/addOneLike', (request, response) => {
-        db.collection('rescues').updateOne({primaryName: request.body.primaryNameS, primaryBreed: request.body.primaryBreedS,likes: request.body.likesS},{
+        db.collection('rescues').updateOne({primaryBreed: request.body.primaryBreedS, primaryName: request.body.primaryNameS,likes: request.body.likesS},{
             $set: {
                 likes:request.body.likesS + 1
               }
@@ -82,7 +82,7 @@ let db,
     })
 
     app.delete('/deleteRescue', (request, response) => {
-        db.collection('rescues').deleteOne({primaryName: request.body.primaryNamesS})
+        db.collection('rescues').deleteOne({primaryBreed: request.body.primaryBreedS})
         .then(result => {
             console.log('Rescue Deleted')
             response.json('Rescue Deleted')
