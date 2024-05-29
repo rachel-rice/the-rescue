@@ -12,6 +12,7 @@ const connectDB = async () => {
     }
   }
 
+//   connection below without mongoose
 // let db,
 //     dbConnectionStr = process.env.DB_STRING,
 //     dbName = 'rescue'
