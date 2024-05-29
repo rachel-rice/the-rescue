@@ -79,6 +79,6 @@ connectDB()
     
     })
     
-app.listen(process.env.PORT || PORT, ()=>{
-    console.log(`Server running on port ${PORT}`)
-})
+    app.listen(process.env.PORT, ()=>{
+        console.log('Server is running, you better catch it!')
+    }) 
