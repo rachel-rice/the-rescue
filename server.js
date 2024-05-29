@@ -1,24 +1,13 @@
 const express = require('express')
 const app = express()
+const connectDB = require('./config/database')
 const MongoClient = require('mongodb').MongoClient
 const PORT = 2121
 require('dotenv').config()
 
-let db,
-    dbConnectionStr = process.env.DB_STRING,
-    dbName = 'rescue'
+connectDB()
 
-    async function connectToDatabase() {
-        try {
-            const client = await MongoClient.connect(dbConnectionStr);
-            console.log(`Connected to ${dbName} Database`);
-            db = client.db(dbName);
-        } catch (error) {
-            console.error("Error connecting to database:", error);
-        }
-    }
-    
-    connectToDatabase();
+
     
 // ***see below for promise
 
