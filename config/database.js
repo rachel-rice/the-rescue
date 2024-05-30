@@ -29,4 +29,4 @@ const connectDB = async () => {
     
 //     connectToDatabase();
 
-module.exports = connectDB
+module.exports = connectDB;

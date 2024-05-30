@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const RescueSchema = new mongoose.Schema({
+const PostSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -20,4 +20,4 @@ const RescueSchema = new mongoose.Schema({
 
 })
 
-module.exports = mongoose.model('Rescue', RescueSchema)
+module.exports = mongoose.model('Post', PostSchema)
