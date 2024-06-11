@@ -34,11 +34,13 @@ module.exports = {
 
       //media is stored on cloudainary - the above request responds with url to media and the media id that you will need when deleting content 
       await Post.create({
-        title: req.body.title,
+        name: req.body.name,
         image: result.secure_url,
         cloudinaryId: result.public_id,
-        caption: req.body.caption,
-        likes: 0,
+        breed: req.body.breed,
+        age: req.body.age,
+        location: req.body.location,
+        description: req.body.description,
         user: req.user.id,
       });
       console.log("Post has been added!");
