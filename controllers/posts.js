@@ -35,6 +35,9 @@ module.exports = {
       console.log(err);
     }
   },
+  getRescue: (req,res)=>{
+    res.render('rescue.ejs')
+  },
   createPost: async (req, res) => {
     try {
       // Upload image to cloudinary
